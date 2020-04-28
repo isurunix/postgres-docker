@@ -1,0 +1,15 @@
+version: "3.4"
+
+services:
+  db:
+    build: .
+    image: postgres:10.12
+    container_name: postgres-10.12-dev
+    network_mode: bridge
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=testdb
+      - POSTGRES_EXTENSIONS=postgis
+    ports:
+      - "5432:5432"
